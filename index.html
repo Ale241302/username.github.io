@@ -1,0 +1,488 @@
+<!doctype html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portafolio — Jorge Alejandro Casierra</title>
+  <meta name="description" content="Portafolio de Jorge Alejandro Casierra Casanova — Desarrollador Full Stack. Animaciones suaves, dark mode, UX/UI cuidada y totalmente responsive." />
+  <!-- Reemplaza tu línea de favicon por esta -->
+  <link rel="icon" type="image/png"
+      href="https://mwt.one/images/vulnerabilidad.png">
+
+
+  <!-- Tailwind CSS (CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Configuración Tailwind: dark mode por clase -->
+  <script>
+    tailwind.config = { darkMode: 'class' }
+  </script>
+
+  <!-- AOS (Animate On Scroll) -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+  <script defer src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+  <style>
+    :root{
+      --brand-900:#0B1E3A; /* primario oscuro */
+      --brand-500:#00B286; /* acento principal */
+      --brand-300:#1DE394; /* acento suave */
+    }
+    /* Scrollbar sutil */
+    ::-webkit-scrollbar{ width:10px; }
+    ::-webkit-scrollbar-track{ background:transparent; }
+    ::-webkit-scrollbar-thumb{ background:#cbd5e1; border-radius:8px;}
+    .dark ::-webkit-scrollbar-thumb{ background:#334155; }
+
+    @media (prefers-reduced-motion: reduce) {
+      html:focus-within { scroll-behavior: auto; }
+      *,:before,:after { animation: none !important; transition: none !important; }
+    }
+  </style>
+
+  <script>
+    // Traducciones ES/EN
+    const i18n = {
+      es: {
+        nav_about: "Sobre mí",
+        nav_skills: "Habilidades",
+        nav_exp: "Experiencia",
+        nav_edu: "Educación",
+        nav_contact: "Contacto",
+        role: "Desarrollador Full Stack",
+        hero_title: "Jorge Alejandro<br class=\"hidden sm:block\"/> Casierra Casanova",
+        hero_p: "Profesional en formación en Ingeniería en Sistemas de Información, estudioso, responsable y respetuoso, con actitud amigable y compromiso constante con el aprendizaje y el desarrollo profesional desde Cartago, Valle del Cauca [ver CV para detalles].",
+        cta_contact: "Contactar",
+        cta_cv: "Descargar CV",
+        card_name: "Jorge A. Casierra",
+        card_role: "Desarrollador Full Stack",
+        card_loc: "Cartago, Valle del Cauca — Colombia",
+        card_sum: "Ingeniería en Sistemas en formación, enfoque en JS/PHP/.NET y bases de datos, con integración de APIs e IA aplicada.",
+        h_about: "Sobre mí",
+        p_about: "Soy un profesional en formación en Ingeniería en Sistemas de Información con base sólida en principios de ingeniería y enfoque en aplicar y expandir conocimientos en TI; me caracterizo por el aprendizaje continuo y la responsabilidad en el trabajo.",
+        h_skills: "Habilidades",
+        p_skills: "Lenguajes y frameworks: JavaScript, PHP, .NET, React, TypeScript, C, C++; bases de datos: MySQL, PostgreSQL, SQL Server; además, integración de APIs REST, IA y CRM en proyectos.",
+        chip_js: "JavaScript",
+        chip_php: "PHP",
+        chip_dotnet: ".NET",
+        chip_react: "React",
+        chip_ts: "TypeScript",
+        chip_c: "C",
+        chip_cpp: "C++",
+        chip_mysql: "MySQL",
+        chip_pg: "PostgreSQL",
+        chip_sqlsrv: "SQL Server",
+        chip_rest: "APIs REST",
+        chip_ai: "IA",
+        chip_crm: "CRM",
+        h_exp: "Experiencia",
+        exp1_title: "DEVYOU — Desarrollador Full Stack",
+        exp1_when: "Cartago · oct. 2024 — ago. 2025",
+        exp1_b1: "Gestión y desarrollo integral de proyectos tecnológicos con liderazgo en administración y cumplimiento a tiempo.",
+        exp1_b2: "Dominio de PHP (Laravel), .NET, React, JavaScript, C y C++, con manejo de bases de datos MySQL, PostgreSQL y SQL Server.",
+        exp1_b3: "Implementación de APIs REST, integración de IA y sistemas CRM para optimizar la operación.",
+        exp2_title: "UNBC CORP — Desarrollador Full Stack",
+        exp2_when: "jun. 2024 — oct. 2024",
+        exp2_b1: "Desarrollo y gestión integral de proyectos tecnológicos con enfoque en resultados y calidad.",
+        exp2_b2: "Amplia experiencia en PHP (Laravel), .NET, React, JavaScript, C y C++, y administración de bases de datos.",
+        exp3_title: "PRIMAX COLOMBIA S.A — Facilitador de Proyectos",
+        exp3_when: "Cartago · sep. 2022 — ene. 2023",
+        exp3_b1: "Apoyo técnico en ingeniería para proyectos como Recibo de Combustibles y Sistema de Aditivación Diésel.",
+        exp3_b2: "Mejoras en infraestructura, iluminación y capacidad; coordinación de contratistas y permisos de trabajo.",
+        exp3_b3: "Fortalecimiento de seguridad en Terminal Yumbo y gestión de riesgos operativos.",
+        exp4_title: "PRIMAX COLOMBIA S.A — Auxiliar Administrativo",
+        exp4_when: "dic. 2021 — sep. 2022",
+        exp4_b1: "Gestión de bases de datos de conductores y contratistas, incluyendo creación, seguimiento y modificación de tareas.",
+        exp4_b2: "Soporte de redes (PBX), conexión de servidores y periféricos de oficina para asegurar continuidad operativa.",
+        h_edu: "Educación",
+        edu1: "COTECNOVA — Ingeniería en Sistemas de Información",
+        edu1_loc: "Cartago",
+        edu2: "SENA — Técnico Profesional en Sistemas de Información",
+        edu2_loc: "Obando",
+        edu3: "Le San José — Bachillerato Académico (con honores)",
+        edu3_loc: "Obando",
+        edu_note: "Ver CV para fechas y detalles adicionales de estudio y graduación.",
+        h_contact: "Contacto",
+        contact_loc_label: "Ubicación",
+        contact_loc_value: "Cartago, Valle del Cauca — Colombia",
+        contact_phone_label: "Teléfono",
+        contact_mail_label: "Correo",
+        footer: "© <span id=\"year\"></span> Jorge A. Casierra — Portafolio. Hecho con HTML, Tailwind y AOS."
+      },
+      en: {
+        nav_about: "About",
+        nav_skills: "Skills",
+        nav_exp: "Experience",
+        nav_edu: "Education",
+        nav_contact: "Contact",
+        role: "Full‑Stack Developer",
+        hero_title: "Jorge Alejandro<br class=\"hidden sm:block\"/> Casierra Casanova",
+        hero_p: "Information Systems Engineering student, diligent, responsible and respectful, with a friendly attitude and a strong commitment to continuous learning and professional growth in Cartago, Valle del Cauca [see résumé for details].",
+        cta_contact: "Contact",
+        cta_cv: "Download CV",
+        card_name: "Jorge A. Casierra",
+        card_role: "Full‑Stack Developer",
+        card_loc: "Cartago, Valle del Cauca — Colombia",
+        card_sum: "Information Systems student focused on JS/PHP/.NET and databases, with experience integrating APIs and applied AI.",
+        h_about: "About",
+        p_about: "Information Systems Engineering student with a solid engineering foundation, focused on applying and expanding IT knowledge, with continuous learning and professional responsibility.",
+        h_skills: "Skills",
+        p_skills: "Languages & frameworks: JavaScript, PHP, .NET, React, TypeScript, C, C++; databases: MySQL, PostgreSQL, SQL Server; plus REST APIs, AI and CRM integrations.",
+        chip_js: "JavaScript",
+        chip_php: "PHP",
+        chip_dotnet: ".NET",
+        chip_react: "React",
+        chip_ts: "TypeScript",
+        chip_c: "C",
+        chip_cpp: "C++",
+        chip_mysql: "MySQL",
+        chip_pg: "PostgreSQL",
+        chip_sqlsrv: "SQL Server",
+        chip_rest: "REST APIs",
+        chip_ai: "AI",
+        chip_crm: "CRM",
+        h_exp: "Experience",
+        exp1_title: "DEVYOU — Full‑Stack Developer",
+        exp1_when: "Cartago · Oct 2024 — Aug 2025",
+        exp1_b1: "End‑to‑end management and development of technology projects with leadership and on‑time delivery.",
+        exp1_b2: "Expertise in PHP (Laravel), .NET, React, JavaScript, C/C++, and databases MySQL, PostgreSQL and SQL Server.",
+        exp1_b3: "Implementation of REST APIs, AI integrations and CRM systems to optimize operations.",
+        exp2_title: "UNBC CORP — Full‑Stack Developer",
+        exp2_when: "Jun 2024 — Oct 2024",
+        exp2_b1: "Development and comprehensive management of technology projects focused on quality and results.",
+        exp2_b2: "Broad experience with PHP (Laravel), .NET, React, JavaScript, C/C++, and database administration.",
+        exp3_title: "PRIMAX COLOMBIA S.A — Project Facilitator",
+        exp3_when: "Cartago · Sep 2022 — Jan 2023",
+        exp3_b1: "Technical support in projects such as Fuel Receiving and Diesel Additivation System.",
+        exp3_b2: "Infrastructure improvements, contractor coordination and work permits management.",
+        exp3_b3: "Security strengthening at Yumbo Terminal and operational risk management.",
+        exp4_title: "PRIMAX COLOMBIA S.A — Administrative Assistant",
+        exp4_when: "Dec 2021 — Sep 2022",
+        exp4_b1: "Management of driver and contractor databases, including task creation, tracking and updates.",
+        exp4_b2: "Network support (PBX), server and office peripherals connections to ensure continuity.",
+        h_edu: "Education",
+        edu1: "COTECNOVA — Information Systems Engineering",
+        edu1_loc: "Cartago",
+        edu2: "SENA — Professional Technician in Information Systems",
+        edu2_loc: "Obando",
+        edu3: "Le San José — Academic High School (with honors)",
+        edu3_loc: "Obando",
+        edu_note: "See CV for dates and additional graduation details.",
+        h_contact: "Contact",
+        contact_loc_label: "Location",
+        contact_loc_value: "Cartago, Valle del Cauca — Colombia",
+        contact_phone_label: "Phone",
+        contact_mail_label: "Email",
+        footer: "© <span id=\"year\"></span> Jorge A. Casierra — Portfolio. Built with HTML, Tailwind and AOS."
+      }
+    };
+
+    // Preferencia de tema (oscuro/claro)
+    (function(){
+      const ls = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if(ls === 'dark' || (!ls && prefersDark)){ document.documentElement.classList.add('dark'); }
+    })();
+
+    // i18n helpers
+    function detectInitialLang() {
+      const saved = localStorage.getItem('lang');
+      if (saved) return saved;
+      const navLangs = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || 'es'];
+      const first = (navLangs[0] || 'es').toLowerCase();
+      return first.startsWith('es') ? 'es' : 'en';
+    }
+
+    function applyLang(lang) {
+      const dict = i18n[lang] || i18n.es;
+      document.documentElement.lang = lang; // accesibilidad/SEO
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (dict[key] !== undefined) {
+          // Permite HTML controlado (ej. <br> en el título)
+          el.innerHTML = dict[key];
+        }
+      });
+      // Atributos traducibles (ejemplo genérico)
+      document.querySelectorAll('[data-i18n-attr]').forEach(el => {
+        const map = el.getAttribute('data-i18n-attr'); // formato: attr:key;attr2:key2
+        map.split(';').forEach(pair => {
+          const [attr, key] = pair.split(':').map(s => s.trim());
+          if (attr && key && dict[key] !== undefined) el.setAttribute(attr, dict[key]);
+        });
+      });
+      // Actualiza etiqueta del botón de idioma
+      const langBtn = document.getElementById('lang-toggle');
+      if (langBtn) langBtn.textContent = lang === 'es' ? 'EN' : 'ES';
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      // Inicia AOS
+      AOS.init({ duration: 700, easing: 'ease-out-quart', once: true, offset: 80 });
+
+      // Idioma inicial
+      const lang = detectInitialLang();
+      applyLang(lang);
+
+      // Toggle tema
+      const themeBtn = document.getElementById('theme-toggle');
+      themeBtn?.addEventListener('click', () => {
+        const html = document.documentElement;
+        const willDark = !html.classList.contains('dark');
+        html.classList.toggle('dark', willDark);
+        localStorage.setItem('theme', willDark ? 'dark' : 'light');
+      });
+
+      // Toggle idioma
+      const langBtn = document.getElementById('lang-toggle');
+      langBtn?.addEventListener('click', () => {
+        const current = document.documentElement.lang || 'es';
+        const next = current === 'es' ? 'en' : 'es';
+        localStorage.setItem('lang', next);
+        applyLang(next);
+      });
+
+      // Año footer
+      document.getElementById('year').textContent = new Date().getFullYear();
+    });
+  </script>
+</head>
+<body class="bg-white text-slate-800 dark:bg-slate-950 dark:text-slate-100 antialiased">
+  <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 bg-white dark:bg-slate-800 px-3 py-2 rounded-md shadow">Saltar al contenido</a>
+
+  <!-- Header fijo -->
+  <header class="sticky top-0 z-40 backdrop-blur supports-[backdrop-filter]:bg-white/60 dark:supports-[backdrop-filter]:bg-slate-900/50 border-b border-slate-200/60 dark:border-slate-800">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="h-9 w-9 rounded-lg bg-[var(--brand-900)] dark:bg-slate-900 ring-4 ring-[var(--brand-300)] flex items-center justify-center text-white font-bold">JC</div>
+        <span class="font-semibold">Jorge A. Casierra</span>
+      </div>
+      <nav class="hidden md:flex items-center gap-6 text-sm">
+        <a href="#sobre-mi" class="hover:text-[var(--brand-500)] transition-colors" data-i18n="nav_about">Sobre mí</a>
+        <a href="#habilidades" class="hover:text-[var(--brand-500)] transition-colors" data-i18n="nav_skills">Habilidades</a>
+        <a href="#experiencia" class="hover:text-[var(--brand-500)] transition-colors" data-i18n="nav_exp">Experiencia</a>
+        <a href="#educacion" class="hover:text-[var(--brand-500)] transition-colors" data-i18n="nav_edu">Educación</a>
+        <a href="#contacto" class="hover:text-[var(--brand-500)] transition-colors" data-i18n="nav_contact">Contacto</a>
+      </nav>
+      <div class="flex items-center gap-2">
+        <!-- Botón idioma -->
+        <button id="lang-toggle" aria-label="Cambiar idioma" class="inline-flex items-center justify-center h-10 px-3 rounded-md border border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-900 transition">EN</button>
+        <!-- Botón tema -->
+        <button id="theme-toggle" aria-label="Cambiar tema" class="inline-flex items-center justify-center h-10 w-10 rounded-md border border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-900 transition">
+          <svg class="block dark:hidden h-5 w-5" viewBox="0 0 24 24" fill="none"><path d="M12 3v2m0 14v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42M8 12a4 4 0 1 0 8 0 4 4 0 0 0-8 0Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          <svg class="hidden dark:block h-5 w-5" viewBox="0 0 24 24" fill="none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </button>
+        <a href="https://drive.google.com/drive/folders/1rBxBIHrxuN2Gto7dqY52OyDY1MPS_7pf?usp=sharing" target="_blank" rel="noopener noreferrer" class="hidden sm:inline-flex items-center gap-2 h-10 px-4 rounded-md bg-[var(--brand-500)] text-white hover:brightness-110 transition" data-i18n="cta_cv">
+          Descargar CV
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Hero -->
+    <section class="relative overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-b from-[var(--brand-300)]/10 via-transparent to-transparent dark:from-[var(--brand-300)]/10"></div>
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
+        <div class="grid md:grid-cols-2 gap-10 items-center">
+          <div data-aos="fade-right">
+            <p class="text-sm uppercase tracking-widest text-[var(--brand-500)] font-semibold" data-i18n="role">Desarrollador Full Stack</p>
+            <h1 class="mt-2 text-4xl sm:text-5xl font-extrabold leading-tight" data-i18n="hero_title">Jorge Alejandro<br class="hidden sm:block"/> Casierra Casanova</h1>
+            <p class="mt-4 text-base sm:text-lg text-slate-600 dark:text-slate-300" data-i18n="hero_p">
+              Profesional en formación en Ingeniería en Sistemas de Información, estudioso, responsable y respetuoso, con actitud amigable y compromiso constante con el aprendizaje y el desarrollo profesional desde Cartago, Valle del Cauca [ver CV para detalles].
+            </p>
+            <div class="mt-6 flex flex-wrap gap-3">
+              <a href="#contacto" class="inline-flex items-center h-11 px-5 rounded-md bg-[var(--brand-900)] text-white hover:brightness-110 transition" data-i18n="cta_contact">Contactar</a>
+              <a href="https://drive.google.com/drive/folders/1rBxBIHrxuN2Gto7dqY52OyDY1MPS_7pf?usp=sharing" target="_blank" rel="noopener noreferrer" class="inline-flex items-center h-11 px-5 rounded-md border border-slate-300 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-900 transition" data-i18n="cta_cv">Descargar CV</a>
+            </div>
+          </div>
+
+          <!-- Card de presentación con animaciones -->
+          <div class="relative"
+               data-aos="zoom-in-up"
+               data-aos-duration="900"
+               data-aos-easing="ease-out-cubic"
+               data-aos-anchor-placement="center-bottom">
+            <div class="group relative max-w-sm mx-auto">
+              <div class="absolute -inset-[2px] rounded-3xl 
+                          bg-[conic-gradient(at_20%_20%,_var(--brand-300),_transparent_30%,_var(--brand-500)_60%,_transparent_80%)]
+                          opacity-60 blur-xl transition duration-700 group-hover:opacity-90 
+                          pointer-events-none motion-reduce:transition-none"></div>
+
+              <div class="relative rounded-3xl border border-slate-200 dark:border-slate-800 
+                          bg-white/70 dark:bg-slate-900/60 backdrop-blur-xl shadow-xl 
+                          p-6 sm:p-8 transform-gpu transition-transform duration-500 
+                          group-hover:-translate-y-1 group-hover:rotate-[0.5deg]
+                          motion-reduce:transform-none motion-reduce:transition-none">
+
+                <div class="flex items-center gap-4" data-aos="fade-left" data-aos-delay="100">
+                  <div class="h-16 w-16 rounded-2xl bg-gradient-to-br from-[var(--brand-900)] to-slate-800 
+                              text-white grid place-content-center text-2xl font-bold shadow-md 
+                              ring-4 ring-[var(--brand-300)]/60 select-none" aria-hidden="true">
+                    JC
+                  </div>
+                  <div>
+                    <h3 class="text-xl font-semibold leading-tight" data-i18n="card_name">Jorge A. Casierra</h3>
+                    <p class="text-[var(--brand-500)] font-medium" data-i18n="card_role">Desarrollador Full Stack</p>
+                    <p class="text-sm text-slate-500 dark:text-slate-400" data-i18n="card_loc">Cartago, Valle del Cauca — Colombia</p>
+                  </div>
+                </div>
+
+                <p class="mt-5 text-slate-600 dark:text-slate-300" data-aos="fade-left" data-aos-delay="150" data-i18n="card_sum">
+                  Ingeniería en Sistemas en formación, enfoque en JS/PHP/.NET y bases de datos, con integración de APIs e IA aplicada.
+                </p>
+
+                <div class="mt-5 flex flex-wrap gap-2" data-aos="fade-left" data-aos-delay="200">
+                  <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-sm" data-i18n="chip_js">JavaScript</span>
+                  <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-sm" data-i18n="chip_php">PHP</span>
+                  <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-sm" data-i18n="chip_dotnet">.NET</span>
+                  <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-sm" data-i18n="chip_react">React</span>
+                  <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-sm" data-i18n="chip_pg">PostgreSQL</span>
+                </div>
+              </div>
+
+              <div class="pointer-events-none absolute -bottom-6 -left-6 h-28 w-28 rounded-2xl 
+                          bg-[var(--brand-300)]/60 blur-2xl animate-pulse" aria-hidden="true"></div>
+              <div class="pointer-events-none absolute -top-6 -right-8 h-24 w-36 rounded-2xl 
+                          bg-[var(--brand-500)]/50 blur-2xl animate-pulse" aria-hidden="true"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sobre mí -->
+    <section id="sobre-mi" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <h2 class="text-2xl sm:text-3xl font-bold" data-i18n="h_about">Sobre mí</h2>
+      <p class="mt-4 text-slate-600 dark:text-slate-300" data-i18n="p_about">
+        Soy un profesional en formación en Ingeniería en Sistemas de Información con base sólida en principios de ingeniería y enfoque en aplicar y expandir conocimientos en TI; me caracterizo por el aprendizaje continuo y la responsabilidad en el trabajo.
+      </p>
+    </section>
+
+    <!-- Habilidades -->
+    <section id="habilidades" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <h2 class="text-2xl sm:text-3xl font-bold" data-i18n="h_skills">Habilidades</h2>
+      <p class="mt-4 text-slate-600 dark:text-slate-300" data-i18n="p_skills">
+        Lenguajes y frameworks: JavaScript, PHP, .NET, React, TypeScript, C, C++; bases de datos: MySQL, PostgreSQL, SQL Server; además, integración de APIs REST, IA y CRM en proyectos.
+      </p>
+      <div class="mt-6 flex flex-wrap gap-2">
+        <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800" data-i18n="chip_js">JavaScript</span>
+        <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800" data-i18n="chip_php">PHP</span>
+        <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800" data-i18n="chip_dotnet">.NET</span>
+        <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800" data-i18n="chip_react">React</span>
+        <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800" data-i18n="chip_ts">TypeScript</span>
+        <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800" data-i18n="chip_c">C</span>
+        <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800" data-i18n="chip_cpp">C++</span>
+        <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800" data-i18n="chip_mysql">MySQL</span>
+        <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800" data-i18n="chip_pg">PostgreSQL</span>
+        <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800" data-i18n="chip_sqlsrv">SQL Server</span>
+        <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800" data-i18n="chip_rest">APIs REST</span>
+        <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800" data-i18n="chip_ai">IA</span>
+        <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800" data-i18n="chip_crm">CRM</span>
+      </div>
+    </section>
+
+    <!-- Experiencia -->
+    <section id="experiencia" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <h2 class="text-2xl sm:text-3xl font-bold" data-i18n="h_exp">Experiencia</h2>
+      <div class="mt-8 grid gap-6">
+        <article class="p-6 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900" data-aos="fade-up">
+          <header class="flex flex-wrap items-center justify-between gap-2">
+            <h3 class="text-lg font-semibold" data-i18n="exp1_title">DEVYOU — Desarrollador Full Stack</h3>
+            <span class="text-sm text-slate-500 dark:text-slate-400" data-i18n="exp1_when">Cartago · oct. 2024 — ago. 2025</span>
+          </header>
+          <ul class="mt-3 list-disc pl-5 space-y-1 text-slate-700 dark:text-slate-300">
+            <li data-i18n="exp1_b1">Gestión y desarrollo integral de proyectos tecnológicos con liderazgo en administración y cumplimiento a tiempo.</li>
+            <li data-i18n="exp1_b2">Dominio de PHP (Laravel), .NET, React, JavaScript, C y C++, con manejo de bases de datos MySQL, PostgreSQL y SQL Server.</li>
+            <li data-i18n="exp1_b3">Implementación de APIs REST, integración de IA y sistemas CRM para optimizar la operación.</li>
+          </ul>
+        </article>
+
+        <article class="p-6 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900" data-aos="fade-up">
+          <header class="flex flex-wrap items-center justify-between gap-2">
+            <h3 class="text-lg font-semibold" data-i18n="exp2_title">UNBC CORP — Desarrollador Full Stack</h3>
+            <span class="text-sm text-slate-500 dark:text-slate-400" data-i18n="exp2_when">jun. 2024 — oct. 2024</span>
+          </header>
+          <ul class="mt-3 list-disc pl-5 space-y-1 text-slate-700 dark:text-slate-300">
+            <li data-i18n="exp2_b1">Desarrollo y gestión integral de proyectos tecnológicos con enfoque en resultados y calidad.</li>
+            <li data-i18n="exp2_b2">Amplia experiencia en PHP (Laravel), .NET, React, JavaScript, C y C++, y administración de bases de datos.</li>
+          </ul>
+        </article>
+
+        <article class="p-6 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900" data-aos="fade-up">
+          <header class="flex flex-wrap items-center justify-between gap-2">
+            <h3 class="text-lg font-semibold" data-i18n="exp3_title">PRIMAX COLOMBIA S.A — Facilitador de Proyectos</h3>
+            <span class="text-sm text-slate-500 dark:text-slate-400" data-i18n="exp3_when">Cartago · sep. 2022 — ene. 2023</span>
+          </header>
+          <ul class="mt-3 list-disc pl-5 space-y-1 text-slate-700 dark:text-slate-300">
+            <li data-i18n="exp3_b1">Apoyo técnico en ingeniería para proyectos como Recibo de Combustibles y Sistema de Aditivación Diésel.</li>
+            <li data-i18n="exp3_b2">Mejoras en infraestructura, iluminación y capacidad; coordinación de contratistas y permisos de trabajo.</li>
+            <li data-i18n="exp3_b3">Fortalecimiento de seguridad en Terminal Yumbo y gestión de riesgos operativos.</li>
+          </ul>
+        </article>
+
+        <article class="p-6 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900" data-aos="fade-up">
+          <header class="flex flex-wrap items-center justify-between gap-2">
+            <h3 class="text-lg font-semibold" data-i18n="exp4_title">PRIMAX COLOMBIA S.A — Auxiliar Administrativo</h3>
+            <span class="text-sm text-slate-500 dark:text-slate-400" data-i18n="exp4_when">dic. 2021 — sep. 2022</span>
+          </header>
+          <ul class="mt-3 list-disc pl-5 space-y-1 text-slate-700 dark:text-slate-300">
+            <li data-i18n="exp4_b1">Gestión de bases de datos de conductores y contratistas, incluyendo creación, seguimiento y modificación de tareas.</li>
+            <li data-i18n="exp4_b2">Soporte de redes (PBX), conexión de servidores y periféricos de oficina para asegurar continuidad operativa.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- Educación -->
+    <section id="educacion" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <h2 class="text-2xl sm:text-3xl font-bold" data-i18n="h_edu">Educación</h2>
+      <ul class="mt-6 grid sm:grid-cols-2 gap-4 text-slate-700 dark:text-slate-300">
+        <li class="p-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900">
+          <p class="font-semibold" data-i18n="edu1">COTECNOVA — Ingeniería en Sistemas de Información</p>
+          <p class="text-sm text-slate-500 dark:text-slate-400" data-i18n="edu1_loc">Cartago</p>
+        </li>
+        <li class="p-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900">
+          <p class="font-semibold" data-i18n="edu2">SENA — Técnico Profesional en Sistemas de Información</p>
+          <p class="text-sm text-slate-500 dark:text-slate-400" data-i18n="edu2_loc">Obando</p>
+        </li>
+        <li class="p-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900">
+          <p class="font-semibold" data-i18n="edu3">Le San José — Bachillerato Académico (con honores)</p>
+          <p class="text-sm text-slate-500 dark:text-slate-400" data-i18n="edu3_loc">Obando</p>
+        </li>
+      </ul>
+      <p class="mt-4 text-sm text-slate-500 dark:text-slate-400" data-i18n="edu_note">Ver CV para fechas y detalles adicionales de estudio y graduación.</p>
+    </section>
+
+    <!-- Contacto -->
+    <section id="contacto" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div class="flex items-center justify-between">
+        <h2 class="text-2xl sm:text-3xl font-bold" data-i18n="h_contact">Contacto</h2>
+        <a href="https://drive.google.com/drive/folders/1rBxBIHrxuN2Gto7dqY52OyDY1MPS_7pf?usp=sharing" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 h-11 px-4 rounded-md bg-[var(--brand-500)] text-white hover:brightness-110 transition" data-i18n="cta_cv">
+          Descargar CV
+        </a>
+      </div>
+      <div class="mt-6 grid sm:grid-cols-3 gap-4">
+        <div class="p-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900" data-aos="fade-up">
+          <p class="text-sm text-slate-500 dark:text-slate-400" data-i18n="contact_loc_label">Ubicación</p>
+          <p class="mt-1 font-semibold" data-i18n="contact_loc_value">Cartago, Valle del Cauca — Colombia</p>
+        </div>
+        <div class="p-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900" data-aos="fade-up" data-aos-delay="100">
+          <p class="text-sm text-slate-500 dark:text-slate-400" data-i18n="contact_phone_label">Teléfono</p>
+          <a class="mt-1 font-semibold block hover:text-[var(--brand-500)]" href="tel:+573046405009">+57 304 640 5009</a>
+        </div>
+        <div class="p-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900" data-aos="fade-up" data-aos-delay="200">
+          <p class="text-sm text-slate-500 dark:text-slate-400" data-i18n="contact_mail_label">Correo</p>
+          <a class="mt-1 font-semibold block hover:text-[var(--brand-500)]" href="mailto:jorjecasanovagmail.com">jorjecasanovagmail.com</a>
+          <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Asegura el formato correcto si deseas usarlo como enlace directo.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-slate-200 dark:border-slate-800">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 text-sm text-slate-500 dark:text-slate-400" data-i18n="footer">
+      © <span id="year"></span> Jorge A. Casierra — Portafolio. Hecho con HTML, Tailwind y AOS.
+    </div>
+  </footer>
+</body>
+</html>
